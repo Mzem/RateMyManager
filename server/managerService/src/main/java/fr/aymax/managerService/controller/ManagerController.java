@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.net.URI;
 import java.util.List;
@@ -21,18 +22,21 @@ public class ManagerController
 	@Autowired
     private ManagerDAO managerDAO;
     
+    @CrossOrigin(origins = "http://localhost:8100")
 	@RequestMapping(value="/Managers", method=RequestMethod.GET)
     public Iterable<Manager> listManagers() 
     {
         return managerDAO.findAll();
     }
     
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(value = "/Managers/{username}", method = RequestMethod.GET)
 	public Manager showManager(@PathVariable String username) 
 	{
 		return managerDAO.findByUsername(username);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8100")
 	@PostMapping(value = "/Managers")
     public ResponseEntity<Void> addManager(@RequestBody Manager manager) 
     {
@@ -53,11 +57,13 @@ public class ManagerController
         return ResponseEntity.created(location).build();
     }
     
+    @CrossOrigin(origins = "http://localhost:8100")
 	@PutMapping (value = "/Managers")
 	public void updateManager(@RequestBody Manager manager) {
 		managerDAO.save(manager);
 	}
 
+	@CrossOrigin(origins = "http://localhost:8100")
 	@DeleteMapping(value = "/Managers/{username}")
 	public void deleteManager(@PathVariable String username) {
 		Manager m = managerDAO.findByUsername(username);
