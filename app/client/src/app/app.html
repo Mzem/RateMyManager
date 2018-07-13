@@ -1,0 +1,34 @@
+<ion-menu [content]="nav">
+	
+	<ion-header>
+		<ion-toolbar>
+			<ion-title class="menuHeaderStyle" padding text-center>Menu</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	
+	<ion-content class="contentStyle">
+		<ion-list>
+		
+			<button ion-item (click)="onLoad(profilePage)">
+				<ion-avatar item-left><img src="assets/imgs/profilePic.png"></ion-avatar>	
+				Mon profil
+			</button>
+			<button ion-item (click)="onLoad(aboutPage)">
+				<ion-icon name="information-circle-outline" item-left></ion-icon>
+				À propos
+			</button>
+			<button ion-item (click)="onLoad(rootPage)">
+				<ion-icon name="log-out" item-left></ion-icon>
+				Déconnection
+			</button>
+		
+		</ion-list>
+	</ion-content>
+	
+	<ion-footer text-center padding>
+	<span ion-text color="darkGray">© </span><span ion-text color="aymaxLight">AY</span><span ion-text color="aymaxDark">MAX</span><span ion-text color="darkGray"> 2018</span>
+	</ion-footer>
+	
+</ion-menu>
+
+<ion-nav [root]="rootPage" #nav></ion-nav>

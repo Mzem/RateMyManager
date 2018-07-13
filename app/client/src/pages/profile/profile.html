@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center class="headerStyle">Mon profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="contentStyle grid-basic-page">
+	
+	<ion-grid text-center padding>
+		<ion-row><ion-col> 	
+			<ion-avatar  (click)="onChangeProfilePic()"><img src="assets/imgs/profilePic.png"></ion-avatar>
+		</ion-col></ion-row>
+		<ion-row><ion-col> 	<h3>{{username}}</h3>	</ion-col></ion-row>
+		<ion-row><ion-col> 	{{profile}}	</ion-col></ion-row>
+	</ion-grid>
+		
+	<ion-grid text-center>
+		<form #f="ngForm" (ngSubmit)="onChangePassword(f)">
+		<ion-row><ion-col>
+			<ion-item>
+				<ion-icon name="unlock" item-left></ion-icon>
+				<ion-input type="password" ngModel name="oldPassword" placeholder="Ancien mot de passe" required></ion-input>
+			</ion-item>
+		</ion-col></ion-row>
+		<ion-row><ion-col>
+			<ion-item>
+				<ion-icon name="lock" item-left></ion-icon>
+				<ion-input type="password" ngModel name="newPassword" placeholder="Nouveau mot de passe" required></ion-input>
+			</ion-item>
+		</ion-col></ion-row>
+		<ion-row><ion-col>
+			<ion-item>
+				<ion-icon name="lock" item-left></ion-icon>
+				<ion-input type="password" ngModel name="confirmPassword" placeholder="Confirmer mot de passe" required></ion-input>
+			</ion-item>
+		</ion-col></ion-row>
+		<ion-row><ion-col>
+			<button ion-button color="aymaxLight" block type="submit" [disabled]="!f.valid">Changer mot de passe</button>
+		</ion-col></ion-row>
+		</form>
+	</ion-grid>
+    
+</ion-content>

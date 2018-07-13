@@ -1,0 +1,28 @@
+page-modalEvaluations {
+	.modalHeaderStyle {
+		background: color($colors, aymaxLight);
+		font-variant: small-caps;
+	}
+	
+	ul {
+		padding: 10px;
+		&.rating li {
+			margin:-5px;
+			background: none;
+			color: #ffb400;
+			ion-icon {
+				font-size: 30px;
+			}
+		}
+	}
+	
+	.commentaire {
+		background: rgba(0,0,0,0.1);
+		font-size:100%;
+	}
+	
+	.commentaireLabel {
+		font-size:70%;
+		color: color($colors, aymaxDark);
+	}
+}

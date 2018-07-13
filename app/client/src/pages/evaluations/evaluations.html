@@ -1,0 +1,75 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons start>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		</ion-buttons>
+		<ion-title text-center class="headerStyle">Mes évaluations</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="contentStyle">
+	
+	<ion-grid text-center>
+		<ion-row>
+			<ion-col>
+				<ion-buttons start>
+				<button ion-button clear>
+					<ion-icon style="color:black;" name="refresh-circle" (click)="onRefreshDate()"></ion-icon>
+				</button>
+				</ion-buttons>
+			</ion-col>
+			<ion-col>
+				<button ion-button icon-end clear color="darkGray">
+					<ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="MM/YYYY" [(ngModel)]="date" min="2018" max="{{ date | date:'yyyy' }}"></ion-datetime>
+					<ion-icon name="arrow-dropdown"></ion-icon>
+				</button>
+			</ion-col>
+			<ion-col>
+				<ion-buttons end>
+				<button ion-button clear>
+					<ion-icon style="color:black;" name="help-circle" (click)="onHelp()"></ion-icon>
+				</button>
+				</ion-buttons>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	
+	<ion-card>
+		<ion-card-header>
+		  Mois précédent - {{ date | date:'MM/yyyy' }}
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list no-lines>
+			<ion-item>
+				<ion-thumbnail item-start><img src="assets/imgs/profilePic.png"></ion-thumbnail>
+				<h2>Aymen</h2>
+				<rating [(ngModel)]="rate" readOnly="true"></rating>
+				<button ion-button color="aymaxLight" item-end (click)="onNoter('Aymen')">Noter</button>
+			</ion-item>
+		</ion-list>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-header>
+		  Mois actuel - {{ date | date:'MM/yyyy' }}
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list no-lines>
+			<ion-item>
+				<ion-thumbnail item-start><img src="assets/imgs/profilePic.png"></ion-thumbnail>
+				<h2>Maxime</h2>
+				<p>blablalb</p>
+				<button ion-button color="aymaxLight" item-end (click)="onNoter('Maxime')">Noter</button>
+			</ion-item>
+		</ion-list>
+		</ion-card-content>
+			
+	</ion-card>
+
+
+</ion-content>

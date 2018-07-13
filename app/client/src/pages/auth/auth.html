@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center class="headerStyle">Connection {{profile | lowercase}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="contentStyle">
+	
+	<div class="authText">
+		<h4>Bonjour !</h4>
+		<p>Utilisez votre adresse e-mail AYMAX pour vous identifier.</p>
+	</div>
+	<form #f="ngForm" (ngSubmit)="onLogin(f)">
+	<ion-grid text-center>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+				<ion-icon name="person" item-left></ion-icon>
+				<ion-input type="email" ngModel name="username" placeholder="prenom.nom@aymax.fr" required></ion-input>
+			</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+				<ion-icon name="lock" item-left></ion-icon>
+				<ion-input type="password" ngModel name="password" placeholder="Mot de passe" required></ion-input>
+			</ion-item>
+			</ion-col>
+		</ion-row>
+		<button ion-button color="aymaxLight" block type="submit" [disabled]="!f.valid">Connection</button>
+    </ion-grid>
+    </form>
+    
+
+</ion-content>

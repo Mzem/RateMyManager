@@ -1,0 +1,37 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons start>
+		<button ion-button (click)="onQuitModal()">
+			<ion-icon name="close"></ion-icon>
+		</button>
+		</ion-buttons>
+		<ion-title text-center class="modalHeaderStyle">Notes du 0X/201X</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="contentStyle">
+
+	<ion-card>
+		<ion-card-content no-padding>
+			<ion-item>
+				<rating [(ngModel)]="rate" readOnly="true"></rating>
+				<p>Un petit commentaire...</p>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+	
+	
+
+	<ion-card>
+		<ion-card-content no-padding>
+			<ion-item>
+				<rating [(ngModel)]="rate" readOnly="true"></rating>
+				<p>Un petit commentaire...</p>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+	
+	
+</ion-content>

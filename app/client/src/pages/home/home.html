@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title class="headerStyle" padding text-center>Votre profil</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="contentStyle" padding center>
+	<ion-grid>
+		<ion-row center>
+			<ion-col text-center>
+				<button class="homeButton" ion-button color="aymaxLight" (click)="onGoToAuth('Consultant')" large>Consultant</button>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col text-center>
+				<button class="homeButton" ion-button color="aymaxDark" (click)="onGoToAuth('Manager')" large>Manager</button>
+			</ion-col>
+		</ion-row>
+    </ion-grid>
+  
+</ion-content>

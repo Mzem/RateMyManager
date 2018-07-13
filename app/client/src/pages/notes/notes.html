@@ -1,0 +1,63 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons start>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		</ion-buttons>
+		<ion-title text-center class="headerStyle">Mes notes</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="contentStyle">
+	
+	<ion-grid text-center>
+		<ion-row>
+			<ion-col>
+				<ion-buttons start>
+				<button ion-button clear>
+					<ion-icon style="color:black;" name="refresh-circle" (click)="onRefreshDate()"></ion-icon>
+				</button>
+				</ion-buttons>
+			</ion-col>
+			<ion-col>
+				<button ion-button icon-end clear color="darkGray">
+					<ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="YYYY" [(ngModel)]="date" min="2018" max="{{ date | date:'yyyy' }}"></ion-datetime>
+					<ion-icon name="arrow-dropdown"></ion-icon>
+				</button>
+			</ion-col>
+			<ion-col>
+				<ion-buttons end>
+				<button ion-button clear>
+					<ion-icon style="color:black;" name="help-circle" (click)="onHelp()"></ion-icon>
+				</button>
+				</ion-buttons>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	
+	<ion-card>
+		<ion-card-content no-padding>
+			<ion-item>
+				05/2018
+				<rating [(ngModel)]="rate" readOnly="true"></rating>
+				<p>3 évaluations</p>
+				<button ion-button color="aymaxLight" item-end (click)="onDetails()">Détails</button>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-content no-padding>
+			<ion-item>
+				06/2018
+				<rating [(ngModel)]="rate" readOnly="true"></rating>
+				<p>4 évaluations</p>
+				<button ion-button color="aymaxLight" item-end (click)="onDetails()">Détails</button>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
+			
+</ion-content>

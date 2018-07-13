@@ -1,0 +1,46 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[right=2cm, left=2cm, bottom=3cm, top=2cm, footskip=1.5cm,]{geometry}
+\usepackage[ddmmyyyy]{datetime}
+\usepackage[table]{xcolor}
+\usepackage{times,mathptmx,changepage,titlesec,hyperref,graphicx,lipsum,shorttoc,enumitem,float,verbatim,subcaption}
+
+\renewcommand{\rmdefault}{\sfdefault}
+\linespread{1.15}
+\hypersetup{colorlinks=true, urlcolor=blue, urlbordercolor=blue, linkcolor=black, linkbordercolor=white}
+\makeatletter \Hy@AtBeginDocument{\def\@pdfborder{0 0 1} \def\@pdfborderstyle{/S/U/W 1}}\makeatother
+
+\titlespacing*{\section} {0cm}{7ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsection} {0cm}{4.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat*{\section}{\huge\bfseries}
+\titleformat*{\subsection}{\LARGE\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+
+
+\begin{document}
+\pagenumbering{gobble}\clearpage
+
+\begin{figure}[H]\begin{center}
+	\begin{subfigure}[b]{0.4\textwidth}\makebox[\textwidth]{\includegraphics[scale=0.7]{home.png}}\end{subfigure}
+	\begin{subfigure}[b]{0.4\textwidth}\makebox[\textwidth]{\includegraphics[scale=0.7]{auth.png}}\end{subfigure}
+\end{center}\end{figure}
+Premières pages de l'application : choix du profil de l'utilisateur (consultant ou manager) et ensuite authentification.
+
+\begin{figure}[H]\begin{center}
+	\begin{subfigure}[b]{0.4\textwidth}\makebox[\textwidth]{\includegraphics[scale=0.7]{evaluations.png}}\end{subfigure}
+	\begin{subfigure}[b]{0.4\textwidth}\makebox[\textwidth]{\includegraphics[scale=0.7]{evaluationsModal.png}}\end{subfigure}
+\end{center}\end{figure}
+Page d'accueil (principale) d'un consultant : évaluation du manager du mois courant et du mois précédent.
+
+\begin{figure}[H]\begin{center}
+	\begin{subfigure}[b]{0.4\textwidth}\makebox[\textwidth]{\includegraphics[scale=0.7]{notes.png}}\end{subfigure}
+	\begin{subfigure}[b]{0.4\textwidth}\makebox[\textwidth]{\includegraphics[scale=0.7]{notesModal.png}}\end{subfigure}
+\end{center}\end{figure}
+Page d'accueil (principale) d'un manager : visualisation de la note globale et des détails des évaluations mensuelles.
+
+\begin{figure}[H]\makebox[\textwidth]{\includegraphics[scale=0.7]{profil.png}}\end{figure}
+Page de profil (d'un consultant ou d'un manager) : informations de l'utilisateur, modification de la photo et du mot de passe.
+
+\end{document}
