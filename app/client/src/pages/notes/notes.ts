@@ -1,24 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavParams, NavController } from "ionic-angular";
 import { AlertController } from "ionic-angular";
 import { ModalController } from "ionic-angular";
 import { ModalNotesPage } from "./modalNotes/modalNotes";
+
+//Auth
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { SERVER_URL } from "../../config";
+import { AuthProvider } from "../../providers/auth/auth";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'page-notes',
   templateUrl: 'notes.html',
 })
 
-export class NotesPage implements OnInit
+export class NotesPage
 {
 	username : string;
 	date: String = new Date().toISOString();
 	rate : any = 0;
 	
-	constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private modalCtrl: ModalController) {}
-	
-	ngOnInit() {
-		this.username = localStorage.getItem('username');
+	constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private modalCtrl: ModalController,
+				private readonly authProvider: AuthProvider,
+				jwtHelper: JwtHelperService,
+				private readonly httpClient: HttpClient) 
+	{				
+		this.authProvider.authUser.subscribe(jwt => {
+			if (jwt) {
+				const decoded = jwtHelper.decodeToken(jwt);
+				this.username = decoded.sub
+			}
+			else {
+				this.username = null;
+			}
+		});
 	}
 	
 	onRefreshDate() {

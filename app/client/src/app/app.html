@@ -9,15 +9,15 @@
 	<ion-content class="contentStyle">
 		<ion-list>
 		
-			<button ion-item (click)="onLoad(profilePage)">
+			<button ion-item (click)="onMenuLoad(profilePage)">
 				<ion-avatar item-left><img src="assets/imgs/profilePic.png"></ion-avatar>	
 				Mon profil
 			</button>
-			<button ion-item (click)="onLoad(aboutPage)">
+			<button ion-item (click)="onMenuLoad(aboutPage)">
 				<ion-icon name="information-circle-outline" item-left></ion-icon>
 				À propos
 			</button>
-			<button ion-item (click)="onLoad(rootPage)">
+			<button ion-item (click)="onLogout()">
 				<ion-icon name="log-out" item-left></ion-icon>
 				Déconnection
 			</button>

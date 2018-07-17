@@ -1,8 +1,8 @@
 {
-  "name": "evalApp-client",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "RateMyManager",
+  "version": "1.0",
+  "author": "Mzem",
+  "homepage": "http://aymax.fr",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
-    "@angular/common": "5.2.11",
+    "@angular/common": "^5.2.11",
     "@angular/compiler": "5.2.11",
     "@angular/compiler-cli": "5.2.11",
     "@angular/core": "5.2.11",
@@ -41,7 +41,8 @@
     "ionic2-rating": "^1.2.2",
     "ionicons": "3.0.0",
     "ng2-validation": "^4.2.0",
-    "rxjs": "5.5.11",
+    "rxjs": "^6.2.2",
+    "rxjs-compat": "^6.2.2",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
   },
@@ -49,7 +50,7 @@
     "@ionic/app-scripts": "3.1.10",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "RateMyManager app",
   "cordova": {
     "plugins": {
       "cordova-plugin-splashscreen": {},

@@ -17,13 +17,32 @@ import { ModalNotesPage } from '../pages/notes/modalNotes/modalNotes';
 //Consuming REST API
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
-//import { AuthProvider } from '../providers/auth/auth';
+import { AuthProvider } from '../providers/auth/auth';
 
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
+
+import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+import { CustomFormsModule } from 'ng2-validation';
+import { Storage, IonicStorageModule } from "@ionic/storage";
+
+//By default, the @auth0/angular-jwt library reads the token from the localStorage with the key id_token. 
+//Because we want to use Ionic's Storage service in this example, we have to tell the library where to look for the token. 
+//We do that by creating a jwtOptionsFactory method and configure the tokenGetter property.
+export function jwtOptionsFactory(storage: Storage) 
+{
+	return {
+		tokenGetter: () => storage.get('jwt_token'),
+		//Because @auth0/angular-jwt attaches a HttpInterceptor to Angular's http client service, every request initiated from our application goes through that interceptor. 
+		//By default, the library does not add the Authorization header to any request. 
+		//We have to whitelist urls where the library is allowed to add the Authorization header with the whitelistedDomains property.
+		//In our application, only request sent to localhost:8080 will contain the Authorization header.
+		whitelistedDomains: ['localhost:8080']
+	}
+}
 
 @NgModule({
   declarations: [
@@ -40,11 +59,21 @@ import { Ionic2RatingModule } from 'ionic2-rating';
   imports: [
     BrowserModule,
     HttpClientModule,
+    //Then we configure the JwtModule with a config object and specify the method as the factory method for the module
+    JwtModule.forRoot({
+		jwtOptionsProvider: {
+			provide: JWT_OPTIONS,
+			useFactory: jwtOptionsFactory,
+			deps: [Storage]
+		}
+    }),
+    CustomFormsModule,
     Ionic2RatingModule,
     IonicModule.forRoot(MyApp, {
 		backButtonText: '',
 		backButtonIcon: 'arrow-back'
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,7 +92,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 	SplashScreen,
 	{provide: ErrorHandler, useClass: IonicErrorHandler},
 	RestProvider,
-	//AuthProvider
+	AuthProvider,
 	FileTransfer,
 	File,
 	Camera
