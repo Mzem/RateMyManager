@@ -3,10 +3,9 @@ package fr.aymax.RateMyManager.entity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.List;
 
 @Entity //This tells Hibernate to make a table out of this class
 @Table(name="ratem_user")
@@ -28,6 +27,10 @@ public class MyUser implements Serializable
     private String createdAt;
 	@Column(name="u_updated_at")
     private String updatedAt;
+    
+    //Cascade ALL, meme pour la suppression : supprime user => supprime son profil
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="myUser", cascade=CascadeType.ALL)
+    private List<Profile> profiles;
 
 	public String getUsername() {
 		return username;
@@ -70,6 +73,12 @@ public class MyUser implements Serializable
 	}
 	public void setUpdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public List<Profile> getProfiles() {
+		return profiles;
+	}
+	public void setProfiles(List<Profile> profiles) {
+		this.profiles = profiles;
 	}
 	public void encodePassword(PasswordEncoder passwordEncoder) {
 		this.password = passwordEncoder.encode(this.password);

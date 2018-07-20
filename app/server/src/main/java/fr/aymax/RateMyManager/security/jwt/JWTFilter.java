@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.stereotype.Component;
 
 import fr.aymax.RateMyManager.RateMyManagerApplication;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -25,6 +26,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
  * Filters incoming requests and installs a Spring Security principal if a header corresponding to a valid user is found.
  * This class will be injected into the Spring Security filter chain and every http request, that needs to be authenticated, will flow through this filter.
  */
+@Component
 public class JWTFilter extends GenericFilterBean 
 {
 	public final static String AUTHORIZATION_HEADER = "Authorization";
@@ -71,7 +73,7 @@ public class JWTFilter extends GenericFilterBean
 	}
 	
 	//Extraction du token de l'entete HTTP de forme Authorization:Bearer eyJhbGciOiJIUzUxMiJ9......
-	private static String resolveToken(HttpServletRequest request) 
+	public static String resolveToken(HttpServletRequest request) 
 	{
 		String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
 		if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {

@@ -62,6 +62,8 @@ public class TokenProvider
 		String username = Jwts.parser().setSigningKey(this.secretKey).parseClaimsJws(token).getBody().getSubject();
 		//Recupere l'user de la bd (s'il n'existe pas, null)
 		UserDetails userDetails = this.userService.loadUserByUsername(username);
+		//Verification que l'utilisateur trouvé dans le token correspond bien à l'utilisateur qui envoie le token
+		
 		//Retourne un objet d'authentification ou null
 		return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
 	}

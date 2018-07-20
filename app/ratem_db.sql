@@ -35,11 +35,11 @@ VALUES
 DROP TABLE IF EXISTS ratem_profile;
 CREATE TABLE ratem_profile (
 	p_id int NOT NULL AUTO_INCREMENT,
-	p_user varchar(50) NOT NULL,
 	p_role varchar(20) NOT NULL,
+	p_user varchar(50) NOT NULL,
 	PRIMARY KEY (p_id),
 	FOREIGN KEY (p_user) REFERENCES ratem_user(u_email),
-	CONSTRAINT UC_profile UNIQUE (p_user, p_role)
+	CONSTRAINT UC_ratem_profile UNIQUE (p_role, p_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO ratem_profile (p_user, p_role)
@@ -64,7 +64,7 @@ CREATE TABLE ratem_managed_by (
 	PRIMARY KEY (mb_id),
 	FOREIGN KEY (mb_consultant) REFERENCES ratem_user(u_email),
 	FOREIGN KEY (mb_manager) REFERENCES ratem_user(u_email),
-	CONSTRAINT UC_managed_by UNIQUE (mb_consultant, mb_manager, mb_begin_date)
+	CONSTRAINT UC_ratem_managed_by UNIQUE (mb_consultant, mb_manager, mb_begin_date)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO ratem_managed_by (mb_consultant, mb_manager, mb_begin_date, mb_end_date) 
@@ -89,7 +89,7 @@ CREATE TABLE ratem_feedback (
 	PRIMARY KEY (f_id),
 	FOREIGN KEY (f_consultant) REFERENCES ratem_user(u_email),
 	FOREIGN KEY (f_manager) REFERENCES ratem_user(u_email),
-	CONSTRAINT UC_feedback UNIQUE (f_consultant, f_manager, f_month)
+	CONSTRAINT UC_ratem_feedback UNIQUE (f_consultant, f_manager, f_month)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO ratem_feedback (f_consultant, f_manager, f_month, f_note, f_commentary)

@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from "../pages/home/home";
 import { ProfilePage } from "../pages/profile/profile";
 import { AboutPage } from "../pages/about/about";
-
 import { EvaluationsPage } from "../pages/evaluations/evaluations";
 import { NotesPage } from "../pages/notes/notes";
 
@@ -18,6 +17,8 @@ import { AuthProvider } from "../providers/auth/auth";
 export class MyApp 
 {
 	rootPage = HomePage;
+	profilePage = ProfilePage;
+	aboutPage = AboutPage;
 	
 	//To acces the ion-nav and the navigation stack (not with injecting navController cuz this is app component)
 	@ViewChild('nav') nav: NavController;
@@ -36,9 +37,8 @@ export class MyApp
 					this.rootPage = EvaluationsPage;
 				else if (localStorage.getItem('profile') === 'Manager')
 					this.rootPage = NotesPage;
-			} else {
+			} else
 				this.rootPage = HomePage;
-			}
 		});
 		
 		//Every time the application starts up it calls the checkLogin() function of the authProvider. This function checks if a JWT is stored locally.

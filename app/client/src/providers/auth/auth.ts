@@ -51,15 +51,10 @@ export class AuthProvider
 	
 	//This function is called from the LoginPage after the user enters his username and password and taps the login button. 
 	//The function posts the data to the /login endpoint and receives back a JWT when the login information is correct. 
-	login(values: any): Observable<any> {
-		return this.httpClient.post(`${SERVER_URL}/login`, values, {responseType: 'text'})
+	login(values: any, profile: string): Observable<any> 
+	{
+		return this.httpClient.post(`${SERVER_URL}/login`, {"username":values.username, "password":values.password, "profiles":[{"role":profile}]}, {responseType: 'text'})
 				.pipe(tap(jwt => this.handleJwtResponse(jwt)));
-	}
-	//Stores the token locally with the storage.set function and then calls authUser.next which triggers the HomePage to load.
-	private handleJwtResponse(jwt: string) {
-		return this.storage.set(this.jwtTokenName, jwt)
-			.then(() => this.authUser.next(jwt))
-			.then(() => jwt);
 	}
 	
 	//Called when the user taps on the logout icon from the HomePage, deletes the token in the Storage and calls authUser.next(null) to trigger a navigation to the LoginPage.
@@ -77,6 +72,27 @@ export class AuthProvider
 				}
 				return jwt;
 			}));
+	}
+	
+	//Posts the update information to the /user/updatePassword endpoint and receives back either a JWT or the string 'EXISTS' when the username already exists. 
+	updatePassword(username: string, values: any): Observable<any> 
+	{
+		return this.httpClient.put(`${SERVER_URL}/updatePassword`, 
+			{
+				"username": username, 
+				"password": values.password, 
+				"newPassword": values.newPassword
+			}, 
+			//this.storage.get(this.jwtTokenName),
+			{responseType: 'text'})
+			.pipe(tap(resp => {return resp;}));
+	}
+	
+	//Stores the token locally with the storage.set function and then calls authUser.next which triggers the HomePage to load.
+	private handleJwtResponse(jwt: string) {
+		return this.storage.set(this.jwtTokenName, jwt)
+			.then(() => this.authUser.next(jwt))
+			.then(() => jwt);
 	}
 }
 

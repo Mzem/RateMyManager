@@ -36,7 +36,7 @@ export class AuthPage implements OnInit
 		loading.present();
 
 		this.authProvider
-			.login(form.value)
+			.login(form.value, "ROLE_"+(this.profile.toUpperCase()))
 			.pipe(finalize(() => loading.dismiss()))
 			.subscribe(() => {}, err => this.handleError(err));
 	}
