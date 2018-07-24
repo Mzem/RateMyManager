@@ -69,20 +69,23 @@ public class AuthController
 		try {
 			this.authenticationManager.authenticate(authenticationToken);
 			
-			//If the user can be authentified but his role in the db doesn't match the chosen role, we throw an exception
-			String loginUserRole = loginUser.getProfiles().get(0).getRole();
-			List<Profile> dbUserProfiles = this.userService.lookup(loginUser.getUsername()).getProfiles();
-			
-			boolean roleOk = false;
-			for (Profile dbUserProfile : dbUserProfiles)
-				if ( dbUserProfile.getRole().equals(loginUserRole) || dbUserProfile.getRole().equals("ROLE_ADMIN") ) {
-					roleOk = true;
-					break;
-				}
-			if (!roleOk)
-				throw new AuthenticationServiceException("User role not matching");
-		
-			
+			try {
+				//If the user can be authentified but his role in the db doesn't match the chosen role, we throw an exception
+				String loginUserRole = loginUser.getProfiles().get(0).getRole();
+				List<Profile> dbUserProfiles = this.userService.lookup(loginUser.getUsername()).getProfiles();
+				
+				boolean roleOk = false;
+				for (Profile dbUserProfile : dbUserProfiles)
+					if ( dbUserProfile.getRole().equals(loginUserRole) || dbUserProfile.getRole().equals("ROLE_ADMIN") ) {
+						roleOk = true;
+						break;
+					}
+				if (!roleOk)
+					throw new AuthenticationServiceException("User role not matching");
+			} catch (NullPointerException e) {
+				RateMyManagerApplication.logger.info("Security exception : User profile not specified");
+				return null;
+			}
 			//When the authentication is successful the method creates a JWT and returns it to the client
 			return this.tokenProvider.createToken(loginUser.getUsername());
 		}
