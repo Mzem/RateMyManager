@@ -5,7 +5,7 @@
 			<ion-icon name="close"></ion-icon>
 		</button>
 		</ion-buttons>
-		<ion-title text-center class="modalHeaderStyle">Notes du 0X/201X</ion-title>
+		<ion-title text-center class="modalHeaderStyle">Notes du {{month}}</ion-title>
 	</ion-navbar>
 
 </ion-header>
@@ -13,25 +13,20 @@
 
 <ion-content padding class="contentStyle">
 
-	<ion-card>
+	<div *ngIf="feedbacks">
+	<ion-card *ngFor="let feedback of feedbacks">
 		<ion-card-content no-padding>
 			<ion-item>
-				<rating [(ngModel)]="rate" readOnly="true"></rating>
-				<p>Un petit commentaire...</p>
+				<rating [(ngModel)]="feedback.note" readOnly="true"></rating>
+				<div *ngIf="feedback.comment;else noComment">
+					<p>{{feedback.comment}}</p>
+				</div>
+				<ng-template #noComment>
+					<p>Aucun commentaire.</p>
+				</ng-template>
 			</ion-item>
 		</ion-card-content>
 	</ion-card>
-	
-	
-
-	<ion-card>
-		<ion-card-content no-padding>
-			<ion-item>
-				<rating [(ngModel)]="rate" readOnly="true"></rating>
-				<p>Un petit commentaire...</p>
-			</ion-item>
-		</ion-card-content>
-	</ion-card>
-	
+	</div>
 	
 </ion-content>

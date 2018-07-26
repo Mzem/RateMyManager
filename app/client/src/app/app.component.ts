@@ -16,7 +16,7 @@ import { AuthProvider } from "../providers/auth/auth";
 })
 export class MyApp 
 {
-	rootPage = HomePage;
+	rootPage;
 	profilePage = ProfilePage;
 	aboutPage = AboutPage;
 	
@@ -29,7 +29,7 @@ export class MyApp
 			statusBar.styleDefault();
 			splashScreen.show();
 		});
-		
+		this.rootPage = HomePage;
 		//When the subscribe function receives a JWT it will change the rootPage to ... and if the input is null it will present the HomePage to the user.
 		authProvider.authUser.subscribe(jwt => {
 			if (jwt) {

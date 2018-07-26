@@ -19,6 +19,8 @@ public class ManagedBy implements Serializable
 	private String beginDate;
 	@Column(name="mb_end_date")
     private String endDate;
+	@Column(name="mb_description")
+    private String description;
 	
 	public Integer getId() {
 		return id;
@@ -49,5 +51,11 @@ public class ManagedBy implements Serializable
 	}
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

@@ -28,12 +28,14 @@ public class Feedback implements Serializable
 		this.manager = manager;
 		this.month = month;
 		this.note = 0;
+		this.comment="";
 	}
     public Feedback(String consultant, String manager, String month, double note) {
 		this.consultant = consultant;
 		this.manager = manager;
 		this.month = month;
 		this.note = note;
+		this.comment="";
 	}
 	
 	public Integer getId() {

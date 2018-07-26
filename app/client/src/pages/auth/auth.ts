@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, NavController, LoadingController, ToastController } from "ionic-angular";
+import { LoadingController, ToastController } from "ionic-angular";
 import { NgForm } from '@angular/forms';
 
 import { EvaluationsPage } from "../evaluations/evaluations";
@@ -19,8 +19,7 @@ export class AuthPage implements OnInit
 	evaluationsPage = EvaluationsPage;
 	notesPage = NotesPage;
 	
-	constructor (private navParams: NavParams, private navCtrl: NavController,
-				private readonly loadingCtrl: LoadingController,
+	constructor (private readonly loadingCtrl: LoadingController,
 				private readonly authProvider: AuthProvider,
 				private readonly toastCtrl: ToastController) {}
 	

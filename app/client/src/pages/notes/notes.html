@@ -24,7 +24,7 @@
 			</ion-col>
 			<ion-col>
 				<button ion-button icon-end clear color="darkGray">
-					<ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="YYYY" [(ngModel)]="date" min="2018" max="{{ date | date:'yyyy' }}"></ion-datetime>
+					<ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="date" min="2017" max="{{ dateNow | date:'yyyy' }}" (ngModelChange)="onChangeDate()"></ion-datetime>
 					<ion-icon name="arrow-dropdown"></ion-icon>
 				</button>
 			</ion-col>
@@ -38,26 +38,26 @@
 		</ion-row>
 	</ion-grid>
 	
-	<ion-card>
-		<ion-card-content no-padding>
-			<ion-item>
-				05/2018
-				<rating [(ngModel)]="rate" readOnly="true"></rating>
-				<p>3 évaluations</p>
-				<button ion-button color="aymaxLight" item-end (click)="onDetails()">Détails</button>
-			</ion-item>
-		</ion-card-content>
-	</ion-card>
+	<ion-grid text-center padding>
+		<ion-row>
+			<ion-col>
+				<rating [(ngModel)]="gloablRating" readOnly="true"></rating>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 	
-	<ion-card>
+	
+	<div *ngIf="yearFeedbacks">
+	<ion-card *ngFor="let yearFeedback of yearFeedbacks">
 		<ion-card-content no-padding>
 			<ion-item>
-				06/2018
-				<rating [(ngModel)]="rate" readOnly="true"></rating>
-				<p>4 évaluations</p>
-				<button ion-button color="aymaxLight" item-end (click)="onDetails()">Détails</button>
+				{{yearFeedback.month}}
+				<rating [(ngModel)]="yearFeedback.avgRating" readOnly="true"></rating>
+				<p>{{yearFeedback.count}} évaluation(s)</p>
+				<button ion-button color="aymaxLight" item-end (click)="onDetails(yearFeedback.month)">Détails</button>
 			</ion-item>
 		</ion-card-content>
 	</ion-card>
+	</div>
 			
 </ion-content>

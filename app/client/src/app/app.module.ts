@@ -16,7 +16,7 @@ import { ModalNotesPage } from '../pages/notes/modalNotes/modalNotes';
 
 //Consuming REST API
 import { HttpClientModule } from '@angular/common/http';
-import { RestProvider } from '../providers/rest/rest';
+import { FeedbackProvider } from '../providers/feedback/feedback';
 import { AuthProvider } from '../providers/auth/auth';
 
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
@@ -91,7 +91,7 @@ export function jwtOptionsFactory(storage: Storage)
 	StatusBar,
 	SplashScreen,
 	{provide: ErrorHandler, useClass: IonicErrorHandler},
-	RestProvider,
+	FeedbackProvider,
 	AuthProvider,
 	FileTransfer,
 	File,

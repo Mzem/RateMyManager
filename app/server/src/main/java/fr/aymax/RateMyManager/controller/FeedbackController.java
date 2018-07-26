@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.net.URI;
 import java.util.List;
+import java .util.HashMap;
 
 @RestController
 @CrossOrigin
@@ -34,7 +35,7 @@ public class FeedbackController
     //Retourne des objets feedback qui ne sont pas enregistrés dans la bd, juste pour l'affichage d'un ajout potentiel de feedback à une période précise
     @PreAuthorize("hasAnyAuthority('ROLE_CONSULTANT', 'ROLE_ADMIN')")
 	@GetMapping(value="/managers")
-    public Iterable<Feedback> listManagers(@RequestParam("consultant") String consultant) 
+    public Iterable<HashMap<String, Object>> listManagers(@RequestParam("consultant") String consultant) 
     {
 		return this.feedbackService.findManagersActuels(consultant);
     }
@@ -86,8 +87,8 @@ public class FeedbackController
 	//Retourne des objets feedback mais construits juste pour l'affichage
 	@PreAuthorize("hasAnyAuthority('ROLE_MANAGER', 'ROLE_ADMIN')")
 	@GetMapping(value="/yearRatings")
-	public Iterable<Feedback> yearRatings(@RequestParam("manager") String manager) {
-		return this.feedbackService.yearRatings(manager);
+	public Iterable<HashMap<String, Object>> yearRatings(@RequestParam("manager") String manager, @RequestParam("year") int year) {
+		return this.feedbackService.yearRatings(manager, year);
 	}
 	
 	//Retourne un vrai objet feedback trouvé de la bd

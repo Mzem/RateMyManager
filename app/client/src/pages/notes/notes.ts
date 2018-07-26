@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { NavParams, NavController } from "ionic-angular";
-import { AlertController } from "ionic-angular";
+import { AlertController, LoadingController } from "ionic-angular";
 import { ModalController } from "ionic-angular";
 import { ModalNotesPage } from "./modalNotes/modalNotes";
 
-//Auth
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { SERVER_URL } from "../../config";
+import { FeedbackProvider } from "../../providers/feedback/feedback";
 import { AuthProvider } from "../../providers/auth/auth";
-import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'page-notes',
@@ -17,14 +15,16 @@ import { HttpClient } from "@angular/common/http";
 
 export class NotesPage
 {
-	username : string;
+	username: string;
 	date: String = new Date().toISOString();
-	rate : any = 0;
+	dateNow: String = new Date().toISOString();
+	gloablRating: number = 0;
+	yearFeedbacks: any;
 	
-	constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private modalCtrl: ModalController,
+	constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private modalCtrl: ModalController, private loadingCtrl: LoadingController,
+				public feedbackProvider: FeedbackProvider,
 				private readonly authProvider: AuthProvider,
-				jwtHelper: JwtHelperService,
-				private readonly httpClient: HttpClient) 
+				jwtHelper: JwtHelperService) 
 	{				
 		this.authProvider.authUser.subscribe(jwt => {
 			if (jwt) {
@@ -37,12 +37,48 @@ export class NotesPage
 		});
 	}
 	
-	onRefreshDate() {
-		this.date = new Date().toISOString();
+	ionViewCanEnter() {
+		const loading = this.loadingCtrl.create({content: 'Chargement...'});
+		loading.present();
+		
+		this.feedbackProvider.getGlobalRating(this.username)
+			.then(data => {
+				this.gloablRating = +data;
+				this.feedbackProvider.getYearRatings(this.username, (new Date(this.date.valueOf())).getFullYear())
+					.then(data => {
+					this.yearFeedbacks = data;
+				});
+				loading.dismiss();
+			});
 	}
 	
-	onHelp() 
+	onDetails(month: string) 
 	{
+		const modal = this.modalCtrl.create(ModalNotesPage, {month: month});
+		modal.present();
+	}
+	
+	onRefreshDate() {
+		this.date = new Date().toISOString();
+		this.onChangeDate();
+	}
+	
+	onChangeDate() {
+		const loading = this.loadingCtrl.create({content: 'Chargement...'});
+		loading.present();
+		
+		this.feedbackProvider.getGlobalRating(this.username)
+			.then(data => {
+				this.gloablRating = +data;
+				this.feedbackProvider.getYearRatings(this.username, (new Date(this.date.valueOf())).getFullYear())
+					.then(data => {
+					this.yearFeedbacks = data;
+				});
+				loading.dismiss();
+			});
+	}
+	
+	onHelp() {
 		const help = this.alertCtrl.create({
 			title: 'Aide',
 			subTitle:'À chaque fin de mois, vos consultants auront la possibilité de vous pouvez évaluer sur cette période.',
@@ -50,12 +86,5 @@ export class NotesPage
 			cssClass: 'alertCustomCss'
 		});
 		help.present();
-	}
-	
-	onDetails(periode: string) 
-	{
-		//date à gérer
-		const modal = this.modalCtrl.create(ModalNotesPage, {periodeData: this.date});
-		modal.present();
 	}
 }

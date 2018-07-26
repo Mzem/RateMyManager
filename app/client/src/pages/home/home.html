@@ -1,19 +1,28 @@
-<ion-header>
-	<ion-navbar>
-		<ion-title class="headerStyle" padding text-center>Votre profil</ion-title>
-	</ion-navbar>
-</ion-header>
-
 <ion-content class="contentStyle" padding center>
-	<ion-grid>
-		<ion-row center>
-			<ion-col text-center>
-				<button class="homeButton" ion-button color="aymaxLight" (click)="onGoToAuth('Consultant')" large>Consultant</button>
+	<ion-grid text-center>
+		<ion-row no-padding>
+			<ion-col>
+				<img src="assets/imgs/logo.png">
+			</ion-col>
+		</ion-row>
+		<ion-row style="margin-top:3%;">
+			<ion-col>
+				<p>Votre profil</p>
 			</ion-col>
 		</ion-row>
 		<ion-row>
-			<ion-col text-center>
-				<button class="homeButton" ion-button color="aymaxDark" (click)="onGoToAuth('Manager')" large>Manager</button>
+			<ion-col>
+				<button class="homeButton" ion-button color="lightGray" (click)="onGoToAuth('Consultant')" large>Consultant</button>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				ou
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<button class="homeButton" ion-button color="lightGray" (click)="onGoToAuth('Manager')" large>Manager</button>
 			</ion-col>
 		</ion-row>
     </ion-grid>

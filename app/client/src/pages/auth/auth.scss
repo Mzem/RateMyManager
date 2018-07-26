@@ -1,7 +1,46 @@
 page-auth 
 {
-	.authText {
+	.authHeader {
 		padding:5%;
+		position: relative;
+		text-align: center;
+		img {
+			width:8em;
+			height:8em;
+		}
+	}
+	
+	.authText {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 110%;
+		color: color($colors, aymaxDark);
+		
+		h4 {
+			margin-left:20px;
+			font-weight: bold;
+			letter-spacing: 0.5em;
+		}
+		
+		p {
+			font-size:90%;
+		}
+	}
+	
+	.authForm {
+		padding: 5%;
+		
+		.authInput {
+			border-radius: 3px;
+			background: rgba(251,251,251,0.8);
+		}
+		
+		button {
+			margin:auto;
+			width:70%;
+		}
 	}
 
 }

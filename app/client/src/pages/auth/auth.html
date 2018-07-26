@@ -9,31 +9,38 @@
 
 <ion-content padding class="contentStyle">
 	
-	<div class="authText">
-		<h4>Bonjour !</h4>
-		<p>Utilisez votre adresse e-mail AYMAX pour vous identifier.</p>
+	<div class="authHeader">
+		<img src="assets/imgs/bar.png">
+		<div class="authText">
+			<h4>BONJOUR !</h4>
+			<p>Utilisez votre adresse e-mail <b>AYMAX</b> pour vous identifier.</p>
+		</div>
 	</div>
+	
+	
+	<div class="authForm">
 	<form #f="ngForm" (ngSubmit)="onLogin(f)">
 	<ion-grid text-center>
-		<ion-row>
+		<ion-row padding-bottom padding-top>
 			<ion-col>
-				<ion-item>
-				<ion-icon name="person" item-left></ion-icon>
+				<ion-item class="authInput">
+				<ion-icon name="person" item-left color="aymaxDark"></ion-icon>
 				<ion-input type="email" ngModel name="username" placeholder="prenom.nom@aymax.fr" required></ion-input>
 			</ion-item>
 			</ion-col>
 		</ion-row>
-		<ion-row>
+		<ion-row padding-bottom>
 			<ion-col>
-				<ion-item>
-				<ion-icon name="lock" item-left></ion-icon>
+				<ion-item class="authInput">
+				<ion-icon name="lock" color="aymaxDark" item-left></ion-icon>
 				<ion-input type="password" ngModel name="password" placeholder="Mot de passe" required></ion-input>
 			</ion-item>
 			</ion-col>
 		</ion-row>
-		<button ion-button color="aymaxLight" block type="submit" [disabled]="!f.valid">Connection</button>
+		<button ion-button color="aymaxLight" type="submit" [disabled]="!f.valid">Connection</button>
     </ion-grid>
     </form>
+    </div>
     
 
 </ion-content>

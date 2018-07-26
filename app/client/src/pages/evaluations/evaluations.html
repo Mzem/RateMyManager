@@ -15,18 +15,8 @@
 	
 	<ion-grid text-center>
 		<ion-row>
-			<ion-col>
-				<ion-buttons start>
-				<button ion-button clear>
-					<ion-icon style="color:black;" name="refresh-circle" (click)="onRefreshDate()"></ion-icon>
-				</button>
-				</ion-buttons>
-			</ion-col>
-			<ion-col>
-				<button ion-button icon-end clear color="darkGray">
-					<ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="MM/YYYY" [(ngModel)]="date" min="2018" max="{{ date | date:'yyyy' }}"></ion-datetime>
-					<ion-icon name="arrow-dropdown"></ion-icon>
-				</button>
+			<ion-col offset-4>
+				<p>{{ date | date:'dd/MM/yyyy' }}</p>
 			</ion-col>
 			<ion-col>
 				<ion-buttons end>
@@ -38,38 +28,31 @@
 		</ion-row>
 	</ion-grid>
 	
-	<ion-card>
+	<!-- fetch evaluations possibles from db -->
+	<div *ngIf="managers">
+	<ion-card *ngFor="let manager of managers">
 		<ion-card-header>
-		  Mois précédent - {{ date | date:'MM/yyyy' }}
+			{{manager.month}}
 		</ion-card-header>
 		<ion-card-content>
 			<ion-list no-lines>
 			<ion-item>
 				<ion-thumbnail item-start><img src="assets/imgs/profilePic.png"></ion-thumbnail>
-				<h2>Aymen</h2>
-				<rating [(ngModel)]="rate" readOnly="true"></rating>
-				<button ion-button color="aymaxLight" item-end (click)="onNoter('Aymen')">Noter</button>
+				<h2>{{manager.firstName}} {{manager.lastName}}</h2>
+				<p>{{manager.description}}</p>
+				<rating [(ngModel)]="manager.feedback.note" readOnly="true"></rating>
+				<button ion-button color="aymaxLight" item-end (click)="onNoter(manager)">
+					<div *ngIf="manager.feedback.id;else editFeedback">
+						Modifier
+					</div>
+					<ng-template #editFeedback>	
+						Noter
+					</ng-template>
+				</button>
 			</ion-item>
 		</ion-list>
 		</ion-card-content>
 	</ion-card>
-	
-	<ion-card>
-		<ion-card-header>
-		  Mois actuel - {{ date | date:'MM/yyyy' }}
-		</ion-card-header>
-		<ion-card-content>
-			<ion-list no-lines>
-			<ion-item>
-				<ion-thumbnail item-start><img src="assets/imgs/profilePic.png"></ion-thumbnail>
-				<h2>Maxime</h2>
-				<p>blablalb</p>
-				<button ion-button color="aymaxLight" item-end (click)="onNoter('Maxime')">Noter</button>
-			</ion-item>
-		</ion-list>
-		</ion-card-content>
-			
-	</ion-card>
-
+	</div>
 
 </ion-content>

@@ -20,6 +20,6 @@ public interface FeedbackDAO extends JpaRepository<Feedback, Integer>
 	@Query(value = "SELECT AVG(f_note) FROM ratem_feedback WHERE f_manager = :manager ", nativeQuery = true)
 	Double globalRating(@Param("manager") String manager);
 	
-	@Query(value = "SELECT AVG(note), month FROM Feedback WHERE manager = :manager GROUP BY month")
-	List<Object[]> yearRatings(@Param("manager") String manager);
+	@Query(value = "SELECT AVG(note), month FROM Feedback WHERE manager = :manager AND month LIKE :month GROUP BY month")
+	List<Object[]> yearRatings(@Param("manager") String manager, @Param("month") String month);
 } 
