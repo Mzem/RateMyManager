@@ -19,6 +19,7 @@ export class MyApp
 	rootPage;
 	profilePage = ProfilePage;
 	aboutPage = AboutPage;
+	username: string;
 	
 	//To acces the ion-nav and the navigation stack (not with injecting navController cuz this is app component)
 	@ViewChild('nav') nav: NavController;

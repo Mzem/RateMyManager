@@ -22,4 +22,7 @@ public interface FeedbackDAO extends JpaRepository<Feedback, Integer>
 	
 	@Query(value = "SELECT AVG(note), month FROM Feedback WHERE manager = :manager AND month LIKE :month GROUP BY month")
 	List<Object[]> yearRatings(@Param("manager") String manager, @Param("month") String month);
+	
+	@Query(value = "SELECT MIN(SUBSTR(f_month,4)) FROM ratem_feedback WHERE f_manager = :manager", nativeQuery = true)
+	Integer minYear(@Param("manager") String manager);
 } 

@@ -1,28 +1,51 @@
-page-modalEvaluations {
-	.modalHeaderStyle {
-		background: color($colors, aymaxLight);
-		font-variant: small-caps;
+page-modalEvaluations 
+{
+	ion-card {
+		margin: auto !important;
+		margin-top: 5% !important;
+		max-width: 400px;
+		background: rgba(253,253,253,0.8) !important;
+		
+		ion-card-header {
+			color: color($colors, aymaxDark) !important;
+		}
+		
+		ion-item {
+			background: rgba(0, 146, 203, 0) !important;
+			margin-top: -5px !important;
+			margin-bottom: -15px !important;
+			justify-content: center !important;
+		}
+		
+		.commentaire {
+			border-radius: 10px;
+			margin-bottom: 10px !important;
+			background: rgba(0, 75, 117,0.05) !important;
+			font-size: 100%;
+			color: color($colors, darkGray);
+		}
+		
+		.commentaireLabel {
+			border-bottom: 1px solid rgba(0, 75, 117,0.7);
+			font-size: 120% !important;
+			color: rgba(0, 75, 117,0.9);
+		}
+	}
+	
+	.validerButton {
+		margin-top: 15px !important;
+		box-shadow: 1px 2px 8px #555;
 	}
 	
 	ul {
 		padding: 10px;
 		&.rating li {
-			margin:-5px;
+			margin:-4%;
 			background: none;
-			color: #ffb400;
+			color: #EFCE4A;
 			ion-icon {
 				font-size: 30px;
 			}
 		}
-	}
-	
-	.commentaire {
-		background: rgba(0,0,0,0.1);
-		font-size:100%;
-	}
-	
-	.commentaireLabel {
-		font-size:70%;
-		color: color($colors, aymaxDark);
 	}
 }

@@ -2,10 +2,10 @@
 	<ion-navbar>
 		<ion-buttons start>
 		<button ion-button (click)="onQuitModal()">
-			<ion-icon name="close"></ion-icon>
+			<ion-icon name="close" style="font-weight:bold; font-size:200%;" padding></ion-icon>
 		</button>
 		</ion-buttons>
-		<ion-title text-center class="modalHeaderStyle">Notes du {{month}}</ion-title>
+		<ion-title text-center class="headerStyle">Notes du {{month}}</ion-title>
 	</ion-navbar>
 
 </ion-header>
@@ -16,8 +16,10 @@
 	<div *ngIf="feedbacks">
 	<ion-card *ngFor="let feedback of feedbacks">
 		<ion-card-content no-padding>
-			<ion-item>
+			<ion-item text-center>
 				<rating [(ngModel)]="feedback.note" readOnly="true"></rating>
+			</ion-item>
+			<ion-item>
 				<div *ngIf="feedback.comment;else noComment">
 					<p>{{feedback.comment}}</p>
 				</div>

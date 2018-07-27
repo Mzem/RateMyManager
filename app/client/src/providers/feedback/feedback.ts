@@ -92,4 +92,15 @@ export class FeedbackProvider
 			});
 		});
 	}
+	
+	getMinYear(manager: string) 
+	{
+		return new Promise(resolve => {
+			this.http.get(this.serverURL+'/minYear?manager='+manager).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+	}
 }

@@ -97,4 +97,10 @@ public class FeedbackController
 	public Iterable<Feedback> monthRatings(@RequestParam("manager") String manager, @RequestParam("month") String month) {
 		return this.feedbackService.monthRatings(manager, month);
 	}
+	
+	@PreAuthorize("hasAnyAuthority('ROLE_MANAGER', 'ROLE_ADMIN')")
+	@GetMapping(value="/minYear")
+	public Integer minYear(@RequestParam("manager") String manager) {
+		return this.feedbackService.minYear(manager);
+	}
 }

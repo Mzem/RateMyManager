@@ -1,16 +1,16 @@
 <ion-menu [content]="nav">
 	
-	<ion-header>
-		<ion-toolbar>
-			<ion-title class="menuHeaderStyle" padding text-center>Menu</ion-title>
-		</ion-toolbar>
+	<ion-header padding text-center margin class="menuHeaderStyle">
+		<img src="assets/imgs/profilePic.png">
+		{{username}}
 	</ion-header>
 	
-	<ion-content class="contentStyle">
+	<ion-content class="menuContentStyle">
 		<ion-list>
 		
 			<button ion-item (click)="onMenuLoad(profilePage)">
-				<ion-avatar item-left><img src="assets/imgs/profilePic.png"></ion-avatar>	
+				<!-- <ion-avatar item-left><img src="assets/imgs/profilePic.png"></ion-avatar> -->
+				<ion-icon name="person" item-left></ion-icon>
 				Mon profil
 			</button>
 			<button ion-item (click)="onMenuLoad(aboutPage)">

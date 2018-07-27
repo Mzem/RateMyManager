@@ -61,7 +61,7 @@ CREATE TABLE ratem_managed_by (
 	mb_manager varchar(50) NOT NULL,
 	mb_begin_date date NOT NULL,
 	mb_end_date date NOT NULL,
-	mb_description varchar(150),
+	mb_description varchar(50),
 	PRIMARY KEY (mb_id),
 	FOREIGN KEY (mb_consultant) REFERENCES ratem_user(u_email),
 	FOREIGN KEY (mb_manager) REFERENCES ratem_user(u_email),

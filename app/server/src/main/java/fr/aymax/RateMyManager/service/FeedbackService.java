@@ -121,4 +121,8 @@ public class FeedbackService
 	public Iterable<Feedback> monthRatings(String manager, String month) {
 		return feedbackDAO.findByManagerAndMonth(manager, month);
 	}
+	
+	public Integer minYear(String manager) {
+		return feedbackDAO.minYear(manager);
+	}
 }

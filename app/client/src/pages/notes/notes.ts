@@ -20,6 +20,7 @@ export class NotesPage
 	dateNow: String = new Date().toISOString();
 	gloablRating: number = 0;
 	yearFeedbacks: any;
+	minYear: number = 2018;
 	
 	constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private modalCtrl: ModalController, private loadingCtrl: LoadingController,
 				public feedbackProvider: FeedbackProvider,
@@ -47,6 +48,10 @@ export class NotesPage
 				this.feedbackProvider.getYearRatings(this.username, (new Date(this.date.valueOf())).getFullYear())
 					.then(data => {
 					this.yearFeedbacks = data;
+					this.feedbackProvider.getMinYear(this.username)
+						.then(data => {
+							this.minYear = +data;
+					});
 				});
 				loading.dismiss();
 			});

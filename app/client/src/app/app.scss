@@ -27,12 +27,23 @@
 }
 
 .menuHeaderStyle {
-	background: color($colors, aymaxLight);
-	font-variant: small-caps;
+	background: color($colors, aymaxDark);
+	img {
+		border-radius: 50%;
+		width:45%;
+		height:45%;
+		border: 1px solid black;
+	}
 }
 
-.menuList {
-	background: color($colors, aymaxLight) !important;
+.menuContentStyle {
+	background: color($colors, aymaxDark);
+	color: white;
+	button {
+		background: rgba(0,0,0,0) !important;
+		color: white;
+		font-weight: bold;
+	}
 }
 
 ion-header ion-icon {

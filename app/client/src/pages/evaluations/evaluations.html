@@ -6,6 +6,9 @@
 		</button>
 		</ion-buttons>
 		<ion-title text-center class="headerStyle">Mes évaluations</ion-title>
+		<ion-buttons end padding-right>
+			<img src="assets/imgs/logo.png" style="width:2em; height:2.5em; padding-top:5px;">
+		</ion-buttons>
 	</ion-navbar>
 
 </ion-header>
@@ -13,15 +16,15 @@
 
 <ion-content padding class="contentStyle">
 	
-	<ion-grid text-center>
+	<ion-grid text-center style="max-width:300px">
 		<ion-row>
 			<ion-col offset-4>
-				<p>{{ date | date:'dd/MM/yyyy' }}</p>
+				<p class="date">{{ date | date:'dd/MM/yyyy' }}</p>
 			</ion-col>
 			<ion-col>
 				<ion-buttons end>
 				<button ion-button clear>
-					<ion-icon style="color:black;" name="help-circle" (click)="onHelp()"></ion-icon>
+					<img src="assets/icon/help.png" style="width:1em; height:1em;" (click)="onHelp()">
 				</button>
 				</ion-buttons>
 			</ion-col>
@@ -30,18 +33,18 @@
 	
 	<!-- fetch evaluations possibles from db -->
 	<div *ngIf="managers">
-	<ion-card *ngFor="let manager of managers">
-		<ion-card-header>
+	<ion-card margin *ngFor="let manager of managers">
+		<ion-card-header text-center>
 			{{manager.month}}
 		</ion-card-header>
-		<ion-card-content>
-			<ion-list no-lines>
-			<ion-item>
-				<ion-thumbnail item-start><img src="assets/imgs/profilePic.png"></ion-thumbnail>
+		<ion-card-content no-padding>
+			<ion-list>
+			<ion-item text-center>
+				<img item-start src="assets/imgs/profilePic.png">
 				<h2>{{manager.firstName}} {{manager.lastName}}</h2>
 				<p>{{manager.description}}</p>
 				<rating [(ngModel)]="manager.feedback.note" readOnly="true"></rating>
-				<button ion-button color="aymaxLight" item-end (click)="onNoter(manager)">
+				<button ion-button color="aymaxLight" (click)="onNoter(manager)">
 					<div *ngIf="manager.feedback.id;else editFeedback">
 						Modifier
 					</div>
@@ -50,7 +53,7 @@
 					</ng-template>
 				</button>
 			</ion-item>
-		</ion-list>
+			</ion-list>
 		</ion-card-content>
 	</ion-card>
 	</div>

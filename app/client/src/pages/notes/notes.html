@@ -5,6 +5,9 @@
 			<ion-icon name="menu"></ion-icon>
 		</button>
 		</ion-buttons>
+		<ion-buttons end padding-right>
+			<img src="assets/imgs/logo.png" style="width:2em; height:2.5em; padding-top:5px;">
+		</ion-buttons>
 		<ion-title text-center class="headerStyle">Mes notes</ion-title>
 	</ion-navbar>
 
@@ -13,35 +16,32 @@
 
 <ion-content padding class="contentStyle">
 	
-	<ion-grid text-center>
+	<ion-item text-center padding-top class="globalRating">
+		<p style="display:inline !important;">Note globale :</p>
+		<rating [(ngModel)]="gloablRating" readOnly="true" item-right></rating>
+	</ion-item>
+	
+	<ion-grid text-center padding-bottom style="max-width:300px">
 		<ion-row>
 			<ion-col>
 				<ion-buttons start>
 				<button ion-button clear>
-					<ion-icon style="color:black;" name="refresh-circle" (click)="onRefreshDate()"></ion-icon>
+					<img src="assets/icon/refresh.png" (click)="onRefreshDate()">
 				</button>
 				</ion-buttons>
 			</ion-col>
 			<ion-col>
-				<button ion-button icon-end clear color="darkGray">
-					<ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="date" min="2017" max="{{ dateNow | date:'yyyy' }}" (ngModelChange)="onChangeDate()"></ion-datetime>
-					<ion-icon name="arrow-dropdown"></ion-icon>
+				<button ion-button icon-end clear color="darkGray" class="date">
+					<ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="date" min="{{minYear}}" max="{{ dateNow | date:'yyyy' }}" (ngModelChange)="onChangeDate()"></ion-datetime>
+					<ion-icon name="arrow-down"></ion-icon>
 				</button>
 			</ion-col>
 			<ion-col>
 				<ion-buttons end>
 				<button ion-button clear>
-					<ion-icon style="color:black;" name="help-circle" (click)="onHelp()"></ion-icon>
+					<img src="assets/icon/help.png" (click)="onHelp()">
 				</button>
 				</ion-buttons>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-	
-	<ion-grid text-center padding>
-		<ion-row>
-			<ion-col>
-				<rating [(ngModel)]="gloablRating" readOnly="true"></rating>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
@@ -49,13 +49,18 @@
 	
 	<div *ngIf="yearFeedbacks">
 	<ion-card *ngFor="let yearFeedback of yearFeedbacks">
+		<ion-card-header text-center>
+			{{yearFeedback.month}}
+		</ion-card-header>
+		
 		<ion-card-content no-padding>
-			<ion-item>
-				{{yearFeedback.month}}
-				<rating [(ngModel)]="yearFeedback.avgRating" readOnly="true"></rating>
-				<p>{{yearFeedback.count}} évaluation(s)</p>
-				<button ion-button color="aymaxLight" item-end (click)="onDetails(yearFeedback.month)">Détails</button>
-			</ion-item>
+			<ion-list>
+				<ion-item>
+					<rating [(ngModel)]="yearFeedback.avgRating" readOnly="true"></rating>
+					<p>{{yearFeedback.count}} évaluation(s)</p>
+					<button ion-button color="aymaxLight" item-end (click)="onDetails(yearFeedback.month)">Détails</button>
+				</ion-item>
+			</ion-list>
 		</ion-card-content>
 	</ion-card>
 	</div>
