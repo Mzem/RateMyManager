@@ -18,6 +18,7 @@ import { finalize } from 'rxjs/operators';
 export class ProfilePage
 {
 	username: string;
+	user: any;
 	profile : string;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, 
@@ -39,6 +40,17 @@ export class ProfilePage
 		});
 		
 		this.profile = localStorage.getItem('profile');
+	}
+	
+	ionViewCanEnter() {
+		const loading = this.loadingCtrl.create({content: 'Chargement...'});
+		loading.present();
+		
+		this.authProvider.getUserInfo(this.username)
+			.then(data => {
+				this.user = data;
+				loading.dismiss();
+			});
 	}
 	
 	onChangePassword(form: NgForm) 

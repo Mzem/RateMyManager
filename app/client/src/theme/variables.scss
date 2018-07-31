@@ -42,12 +42,19 @@ $colors: (
   aymaxDark:  #154A72,
   aymaxLight: #3790C1,
   lightGray:  #F6F6F6,
-  darkGray:	  #6E6E6E
+  darkGray:	  #6E6E6E,
+  white:	  #FFFFFF
 );
 
 $toolbar-md-title-text-color: map-get($colors, lightGray);
 $toolbar-ios-title-text-color: map-get($colors, lightGray);
 $toolbar-wp-title-text-color: map-get($colors, lightGray);
+
+$checkbox-md-icon-checkmark-color: map-get($colors, aymaxDark);
+$checkbox-md-icon-checkmark-width: 2px;
+$checkbox-md-icon-size: 40px;
+$checkbox-md-icon-border-radius: 0%;
+$checkbox-md-icon-border-width: 1px;
 
 // App iOS Variables
 // --------------------------------------------------

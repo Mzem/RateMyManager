@@ -42,5 +42,18 @@ page-auth
 			width:70%;
 		}
 	}
+	
+	.check {
+		background: rgba(0,0,0,0);
+		font-size:90%;
+		margin-top:-5px !important;
+	}
+	
+	.reset {
+		background: rgba(0,0,0,0);
+		font-size:90%;
+		margin-top:-5px !important;
+		text-decoration: underline;
+	}	
 
 }

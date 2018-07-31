@@ -94,5 +94,15 @@ export class AuthProvider
 			.then(() => this.authUser.next(jwt))
 			.then(() => jwt);
 	}
+	
+	getUserInfo(username: string) {
+		return new Promise(resolve => {
+			this.httpClient.get(`${SERVER_URL}/userInfo?username=`+username).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+			});
+		});
+	}
 }
 

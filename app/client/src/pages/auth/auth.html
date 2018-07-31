@@ -21,7 +21,7 @@
 	<div class="authForm">
 	<form #f="ngForm" (ngSubmit)="onLogin(f)">
 	<ion-grid text-center>
-		<ion-row padding-bottom padding-top>
+		<ion-row padding-top>
 			<ion-col>
 				<ion-item class="authInput">
 				<ion-icon name="person" item-left color="aymaxDark"></ion-icon>
@@ -29,7 +29,7 @@
 			</ion-item>
 			</ion-col>
 		</ion-row>
-		<ion-row padding-bottom>
+		<ion-row>
 			<ion-col>
 				<ion-item class="authInput">
 				<ion-icon name="lock" color="aymaxDark" item-left></ion-icon>
@@ -37,10 +37,20 @@
 			</ion-item>
 			</ion-col>
 		</ion-row>
+		
+		<ion-item no-lines padding-bottom class="reset"><button ion-button clear type="button" (click)="onResetPassword()" class="reset">Mot de passe oublié ?</button></ion-item>
+		<!--
+		<ion-item no-lines class="check">
+			<ion-label>Rester identifié</ion-label>
+			<ion-checkbox ngModel name="remember"></ion-checkbox>
+		</ion-item>
+		-->
 		<button ion-button color="aymaxLight" type="submit" [disabled]="!f.valid">Connection</button>
     </ion-grid>
     </form>
-    </div>
     
+    
+    
+    </div>
 
 </ion-content>

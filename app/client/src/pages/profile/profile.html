@@ -10,37 +10,48 @@
 <ion-content padding class="contentStyle grid-basic-page">
 	
 	<ion-grid text-center padding>
-		<ion-row><ion-col> 	
-			<ion-avatar  (click)="onChangeProfilePic()"><img src="assets/imgs/profilePic.png"></ion-avatar>
+		<ion-row padding><ion-col> 	
+			<div class="profilePic">
+				<ion-avatar  (click)="onChangeProfilePic()"> <img src="assets/imgs/profilePic.png"></ion-avatar>
+				<div class="cameraIcon">
+					<img src="assets/icon/camera.png">
+				</div>
+			</div>
 		</ion-col></ion-row>
-		<ion-row><ion-col> 	<h3>{{username}}</h3>	</ion-col></ion-row>
-		<ion-row><ion-col> 	{{profile}}	</ion-col></ion-row>
+		<div *ngIf="user">
+			<ion-row no-padding-top><ion-col> 	<span class="userInfo">{{user.firstName}} {{user.lastName}}</span>	</ion-col></ion-row>
+		</div>
+		<ion-row no-padding><ion-col> 	<span class="userEmail">{{username}}</span>	</ion-col></ion-row>
+		<ion-row no-padding><ion-col> 	<span class="userProfile">{{profile}}</span>	</ion-col></ion-row>
 	</ion-grid>
-		
+	
+	<div class="authForm">
 	<ion-grid text-center>
 		<form #f="ngForm" (ngSubmit)="onChangePassword(f)">
+		<ion-label>Changer mot de passe (6 caractères minimum) :</ion-label>
 		<ion-row><ion-col>
-			<ion-item>
-				<ion-icon name="unlock" item-left></ion-icon>
+			<ion-item class="authInput">
+				<ion-icon name="unlock" item-left color="aymaxDark"></ion-icon>
 				<ion-input type="password" ngModel name="password" placeholder="Ancien mot de passe" required></ion-input>
 			</ion-item>
 		</ion-col></ion-row>
 		<ion-row><ion-col>
-			<ion-item>
-				<ion-icon name="lock" item-left></ion-icon>
+			<ion-item class="authInput">
+				<ion-icon name="lock" item-left color="aymaxDark"></ion-icon>
 				<ion-input type="password" ngModel name="newPassword" placeholder="Nouveau mot de passe" required></ion-input>
 			</ion-item>
 		</ion-col></ion-row>
 		<ion-row><ion-col>
-			<ion-item>
-				<ion-icon name="lock" item-left></ion-icon>
+			<ion-item class="authInput">
+				<ion-icon name="lock" item-left color="aymaxDark"></ion-icon>
 				<ion-input type="password" ngModel name="confirmPassword" placeholder="Confirmer mot de passe" required></ion-input>
 			</ion-item>
 		</ion-col></ion-row>
-		<ion-row><ion-col>
+		<ion-row padding-top><ion-col>
 			<button ion-button color="aymaxLight" block type="submit" [disabled]="!f.valid">Changer mot de passe</button>
 		</ion-col></ion-row>
 		</form>
 	</ion-grid>
+	</div>
     
 </ion-content>

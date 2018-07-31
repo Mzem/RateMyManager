@@ -1,0 +1,20 @@
+page-modalReset
+{
+	.resetForm {
+		padding: 3%;
+		
+		ion-label {
+			text-align: left;
+		}
+		
+		.resetInput {
+			border-radius: 5px;
+			background: rgba(254,254,254,0.9);
+		}
+		
+		button {
+			margin:auto;
+			width:70%;
+		}
+	}
+}

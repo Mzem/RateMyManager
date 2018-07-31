@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ToastController } from "ionic-angular";
+import { LoadingController, ToastController, ModalController } from "ionic-angular";
 import { NgForm } from '@angular/forms';
 
 import { EvaluationsPage } from "../evaluations/evaluations";
 import { NotesPage } from "../notes/notes";
+import { ModalResetPage } from "./modalReset/modalReset";
 
 import { AuthProvider } from "../../providers/auth/auth";
 import { finalize } from 'rxjs/operators';
@@ -19,7 +20,7 @@ export class AuthPage implements OnInit
 	evaluationsPage = EvaluationsPage;
 	notesPage = NotesPage;
 	
-	constructor (private readonly loadingCtrl: LoadingController,
+	constructor (private readonly loadingCtrl: LoadingController, private modalCtrl: ModalController,
 				private readonly authProvider: AuthProvider,
 				private readonly toastCtrl: ToastController) {}
 	
@@ -62,5 +63,10 @@ export class AuthPage implements OnInit
 	ngOnInit() {
 		//this.profile = this.navParams.get('profileData');
 		this.profile = localStorage.getItem('profile');
+	}
+	
+	onResetPassword() {
+		const modal = this.modalCtrl.create(ModalResetPage);
+		modal.present();
 	}
 }

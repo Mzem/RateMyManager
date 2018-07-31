@@ -133,5 +133,15 @@ public class AuthController
 			return "BAD_UPDATE_DATA";
 		}
 	}
+	
+	@GetMapping("/userInfo")
+	public HashMap<String, Object> userInfo(@RequestParam("username") String username) 
+	{
+		MyUser user = this.userService.lookup(username);
+		HashMap<String, Object> userInfoMap = new HashMap<String, Object>();
+		userInfoMap.put("firstName",user.getFirstName());
+		userInfoMap.put("lastName",user.getLastName());
+		return userInfoMap;
+	}
 
 }

@@ -9,6 +9,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { FeedbackProvider } from "../../providers/feedback/feedback";
 import { AuthProvider } from "../../providers/auth/auth";
 
+import { Events } from 'ionic-angular';
+
 @Component({
   selector: 'page-evaluations',
   templateUrl: 'evaluations.html',
@@ -22,6 +24,7 @@ export class EvaluationsPage
 	rate: any = 0;
 	
 	constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private modalCtrl: ModalController, private loadingCtrl: LoadingController,
+				public events: Events,
 				public feedbackProvider: FeedbackProvider,
 				private readonly authProvider: AuthProvider,
 				jwtHelper: JwtHelperService) 
@@ -35,6 +38,7 @@ export class EvaluationsPage
 				this.username = null;
 			}
 		});
+		this.events.publish('user:created', this.username);
 	}
 	
 	ionViewCanEnter() {

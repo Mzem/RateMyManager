@@ -2,11 +2,11 @@
 	
 	<ion-header padding text-center margin class="menuHeaderStyle">
 		<img src="assets/imgs/profilePic.png">
-		{{username}}
+		<p style="color:white;">{{username}}</p>
 	</ion-header>
 	
 	<ion-content class="menuContentStyle">
-		<ion-list>
+		<ion-list style="margin-top: 17px !important;">
 		
 			<button ion-item (click)="onMenuLoad(profilePage)">
 				<!-- <ion-avatar item-left><img src="assets/imgs/profilePic.png"></ion-avatar> -->
@@ -26,7 +26,8 @@
 	</ion-content>
 	
 	<ion-footer text-center padding>
-	<span ion-text color="darkGray">© </span><span ion-text color="aymaxLight">AY</span><span ion-text color="aymaxDark">MAX</span><span ion-text color="darkGray"> 2018</span>
+		<p><img src="assets/imgs/logo.png" style="width:30%; height:auto; margin-bottom: -20px;"></p>
+		<span ion-text color="white">© </span><span ion-text color="aymaxLight">AY</span><span ion-text color="white">MAX</span><span ion-text color="aymaxLight"> 2018</span>
 	</ion-footer>
 	
 </ion-menu>

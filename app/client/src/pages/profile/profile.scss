@@ -1,8 +1,51 @@
 page-profile {
-	ion-avatar, ion-avatar > img {
-		border-radius:50%;
+	
+	.profilePic {
+		position: relative;
+		text-align: center;
 		height:12rem;
 		width:12rem;
-		margin: auto;
+		margin:auto;
+		ion-avatar > img {
+			border-radius:50%;
+			height:12rem;
+			width:12rem;
+			margin: auto;
+		}
+		.cameraIcon {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 2em;
+		}
+	}
+	
+	.authForm {
+		padding: 5%;
+		
+		.authInput {
+			border-radius: 5px;
+			background: rgba(251,251,251,0.8);
+		}
+		
+		button {
+			margin:auto;
+			min-width:200px;
+			width:70%;
+		}
+	}
+	
+	.userInfo {
+		color: color($colors, aymaxDark);
+		font-weight: bold;
+		font-size: 200%;
+	}
+	.userEmail {
+		color: color($colors, aymaxLight);
+	}
+	.userProfile {
+		color: color($colors, aymaxDark);
+		font-weight: bold;
+		font-size: 120%;
 	}
 }

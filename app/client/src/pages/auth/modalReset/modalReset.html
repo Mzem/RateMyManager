@@ -1,0 +1,37 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons start>
+		<button ion-button (click)="onQuitModal()">
+			<ion-icon name="close" style="font-weight:bold; font-size:200%;" padding></ion-icon>
+		</button>
+		</ion-buttons>
+		<ion-title text-center class="headerStyle">Réinitialisation</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="contentStyle" text-center>
+
+		<div class="resetForm">
+		<form #f="ngForm" (ngSubmit)="onValidateModal(f)">
+		<ion-grid text-center>
+			<ion-row padding>
+				<ion-col>
+					<ion-label>Votre adresse e-mail :</ion-label>
+					<ion-item class="resetInput">
+						<ion-icon name="person" item-left color="aymaxDark"></ion-icon>
+						<ion-input type="email" ngModel name="username" placeholder="prenom.nom@aymax.fr" pattern="[A-Za-z0-9._%+-]{3,}@aymax(.fr|.tn)" required></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			
+			<button ion-button color="aymaxLight" type="submit" [disabled]="!f.valid">Réinitialiser mot de passe</button>
+		</ion-grid>
+		</form>
+		
+		
+		
+		</div>
+		
+</ion-content>

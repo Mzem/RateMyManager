@@ -13,6 +13,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { AboutPage } from '../pages/about/about';
 import { ModalEvaluationsPage } from '../pages/evaluations/modalEvaluations/modalEvaluations';
 import { ModalNotesPage } from '../pages/notes/modalNotes/modalNotes';
+import { ModalResetPage } from '../pages/auth/modalReset/modalReset';
 
 //Consuming REST API
 import { HttpClientModule } from '@angular/common/http';
@@ -55,6 +56,7 @@ export function jwtOptionsFactory(storage: Storage)
     AboutPage,
     ModalEvaluationsPage,
     ModalNotesPage,
+    ModalResetPage,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ export function jwtOptionsFactory(storage: Storage)
     ProfilePage,
     AboutPage,
     ModalEvaluationsPage,
-    ModalNotesPage
+    ModalNotesPage,
+    ModalResetPage
   ],
   providers: [
 	StatusBar,
