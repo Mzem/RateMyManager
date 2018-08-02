@@ -1,5 +1,4 @@
 target/
-maven-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -50,3 +49,7 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+## LaTeX ##
+*.aux
+*.log
