@@ -5,6 +5,7 @@
 *URL serveur (pour le client) :*
 
 	app/client/src/config.ts
+	app/client/src/app/app.module.ts (whitelist)
 
 **Lancement serveur :**
 
