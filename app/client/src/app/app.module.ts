@@ -20,10 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FeedbackProvider } from '../providers/feedback/feedback';
 import { AuthProvider } from '../providers/auth/auth';
 
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
-import { Camera } from '@ionic-native/camera';
-
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
@@ -95,10 +91,7 @@ export function jwtOptionsFactory(storage: Storage)
 	SplashScreen,
 	{provide: ErrorHandler, useClass: IonicErrorHandler},
 	FeedbackProvider,
-	AuthProvider,
-	FileTransfer,
-	File,
-	Camera
+	AuthProvider
   ]
 })
 export class AppModule {}

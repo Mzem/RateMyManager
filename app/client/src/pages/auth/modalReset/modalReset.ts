@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NavParams, NavController } from "ionic-angular";
+import { NavController } from "ionic-angular";
 import { ViewController, AlertController } from "ionic-angular";
 import { NgForm } from '@angular/forms';
 
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { FeedbackProvider } from "../../../providers/feedback/feedback";
-import { AuthProvider } from "../../../providers/auth/auth";
+//import { FeedbackProvider } from "../../../providers/feedback/feedback";
+//import { AuthProvider } from "../../../providers/auth/auth";
 
 @Component({
   selector: 'page-modalReset',
@@ -14,9 +14,9 @@ import { AuthProvider } from "../../../providers/auth/auth";
 
 export class ModalResetPage
 {
-	constructor(public navCtrl: NavController, private navParams: NavParams, private viewCtrl: ViewController, private alertCtrl: AlertController,
-				public feedbackProvider: FeedbackProvider,
-				private readonly authProvider: AuthProvider,
+	constructor(public navCtrl: NavController, private viewCtrl: ViewController, private alertCtrl: AlertController,
+				//public feedbackProvider: FeedbackProvider,
+				//private readonly authProvider: AuthProvider,
 				jwtHelper: JwtHelperService)
 	{				
 		

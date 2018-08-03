@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController, ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { AuthProvider } from "../../providers/auth/auth";
@@ -22,8 +20,6 @@ export class ProfilePage
 	profile : string;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, 
-		private transfer: FileTransfer,
-		private camera: Camera,
 		public loadingCtrl: LoadingController,
 		public toastCtrl: ToastController,
 		private readonly authProvider: AuthProvider,

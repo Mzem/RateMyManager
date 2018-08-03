@@ -47,6 +47,7 @@ export class MyApp
 		//Every time the application starts up it calls the checkLogin() function of the authProvider. This function checks if a JWT is stored locally.
 		authProvider.checkLogin();
 		
+		//Pour pouvoir afficher l'utilisateur dans le sidemenu
 		events.subscribe('user:created', (username) => {
 			this.username = username;
 		});
