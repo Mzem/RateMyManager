@@ -53,3 +53,5 @@ UserInterfaceState.xcuserstate
 ## LaTeX ##
 *.aux
 *.log
+
+Makefile
