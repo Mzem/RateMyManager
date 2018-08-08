@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text-center class="headerStyle">Connection {{profile | lowercase}}</ion-title>
+    <ion-title text-center class="pageTitle">Connection {{profile | lowercase}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -25,7 +25,7 @@
 			<ion-col>
 				<ion-item class="authInput">
 				<ion-icon name="person" item-left color="aymaxDark"></ion-icon>
-				<ion-input type="email" ngModel name="username" placeholder="prenom.nom@aymax.fr" required></ion-input>
+				<ion-input type="email" ngModel name="username" placeholder="prenom.nom@aymax.fr" pattern="[A-Za-z0-9._%+-]{3,}@aymax(.fr|.tn)" required></ion-input>
 			</ion-item>
 			</ion-col>
 		</ion-row>
@@ -45,7 +45,7 @@
 			<ion-checkbox ngModel name="remember"></ion-checkbox>
 		</ion-item>
 		-->
-		<button ion-button color="aymaxLight" type="submit" [disabled]="!f.valid">Connection</button>
+		<button type="submit" [disabled]="!f.valid">Connection</button>
     </ion-grid>
     </form>
     

@@ -90,6 +90,8 @@ export class AuthProvider
 	
 	//Stores the token locally with the storage.set function and then calls authUser.next which triggers the HomePage to load.
 	private handleJwtResponse(jwt: string) {
+		if (!jwt)
+			return false;
 		return this.storage.set(this.jwtTokenName, jwt)
 			.then(() => this.authUser.next(jwt))
 			.then(() => jwt);

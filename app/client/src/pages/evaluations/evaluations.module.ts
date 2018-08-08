@@ -3,9 +3,6 @@ import { IonicPageModule } from 'ionic-angular';
 import { EvaluationsPage } from './evaluations';
 
 @NgModule({
-  declarations: [
-    EvaluationsPage,
-  ],
   imports: [
     IonicPageModule.forChild(EvaluationsPage),
   ],

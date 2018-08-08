@@ -69,7 +69,11 @@ export function jwtOptionsFactory(storage: Storage)
     Ionic2RatingModule,
     IonicModule.forRoot(MyApp, {
 		backButtonText: '',
-		backButtonIcon: 'arrow-back'
+		backButtonIcon: 'ios-arrow-back',
+		iconMode: 'ios',
+		pageTransition: 'ios-transition',
+		modalEnter:'modal-slide-in',
+		modalLeave:'modal-slide-out'
     }),
     IonicStorageModule.forRoot()
   ],

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 
 import { AuthPage } from "../auth/auth";
 
@@ -13,12 +13,15 @@ export class HomePage
 	authPage = AuthPage;
 	
 	//NavController is needed to navigate aroud the app, its a class which allows to manage the stack of pages
-	constructor(public navCtrl: NavController) {}
+	constructor(public navCtrl: NavController, private menu: MenuController) {}
 	
 	//We push a new page on the stack
 	onGoToAuth(profile : string) {
 		localStorage.setItem('profile', profile);
 		this.navCtrl.push(AuthPage);//, {profileData: profile});
 	}
-
+	
+	ionViewDidEnter() {
+		this.menu.swipeEnable(false);
+	}
 }

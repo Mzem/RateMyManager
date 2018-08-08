@@ -19,10 +19,12 @@ page-home
 	}
 	
 	.homeButton {
-		padding: 35px;
+		padding: 25px;
 		margin:5%;
 		width:70%;
 		color: color($colors, aymaxLight);
 		font-weight: bold;
+		font-size: 120%;
+		background: color($colors, lightGray);
 	}
 }

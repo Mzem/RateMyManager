@@ -21,9 +21,26 @@
 	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 44%,rgba(237,237,237,1) 100%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
-.headerStyle {
+
+ion-navbar {
 	background: color($colors, aymaxDark);
 	font-variant: small-caps;
+	.toolbar-background {
+		background: none;
+	}
+}
+
+.md {
+	.pageTitle {
+		padding-right: 50px;
+	}
+	.modalTitle {
+		padding-left: 55px;
+	}
+}
+
+ion-header ion-icon {
+    color: white !important;
 }
 
 .menuHeaderStyle {
@@ -45,10 +62,6 @@
 	}
 }
 
-ion-header ion-icon {
-    color: white !important;
-}
-
 .alertCustomCss {
 	.alert-message {
 		color: gray;
@@ -58,4 +71,9 @@ ion-header ion-icon {
 
 button {
 	border-radius: 0px !important;
+	color: white;
+	background: color($colors, aymaxLight);
+	font-size: 110%;
+	padding: 15px;
+	text-transform: unset !important;
 }

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text-center class="headerStyle">Mon profil</ion-title>
+    <ion-title text-center class="pageTitle">Mon profil</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,7 +9,7 @@
 
 <ion-content padding class="contentStyle grid-basic-page">
 	
-	<ion-grid text-center padding>
+	<ion-grid text-center no-padding-bottom padding-top>
 		<ion-row padding><ion-col> 	
 			<div class="profilePic">
 				<ion-avatar  (click)="onChangeProfilePic()"> <img src="assets/imgs/profilePic.png"></ion-avatar>
@@ -26,9 +26,9 @@
 	</ion-grid>
 	
 	<div class="authForm">
-	<ion-grid text-center>
+	<ion-grid text-center no-padding>
 		<form #f="ngForm" (ngSubmit)="onChangePassword(f)">
-		<ion-label>Changer mot de passe (6 caractères minimum) :</ion-label>
+		<ion-label>Changer mot de passe <span style="font-size:70%; color: gray;">(6 caractères minimum)</span></ion-label>
 		<ion-row><ion-col>
 			<ion-item class="authInput">
 				<ion-icon name="unlock" item-left color="aymaxDark"></ion-icon>

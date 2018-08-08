@@ -1,11 +1,11 @@
 <ion-header>
 	<ion-navbar>
-		<ion-buttons start>
+		<ion-buttons end>
 		<button ion-button (click)="onQuitModal()">
 			<ion-icon name="close" style="font-weight:bold; font-size:200%;" padding></ion-icon>
 		</button>
 		</ion-buttons>
-		<ion-title text-center class="headerStyle">Réinitialisation</ion-title>
+		<ion-title text-center class="modalTitle">Réinitialisation</ion-title>
 	</ion-navbar>
 
 </ion-header>
@@ -26,7 +26,7 @@
 				</ion-col>
 			</ion-row>
 			
-			<button ion-button color="aymaxLight" type="submit" [disabled]="!f.valid">Réinitialiser mot de passe</button>
+			<button type="submit" [disabled]="!f.valid">Réinitialiser mot de passe</button>
 		</ion-grid>
 		</form>
 		

@@ -49,12 +49,50 @@ $colors: (
 $toolbar-md-title-text-color: map-get($colors, lightGray);
 $toolbar-ios-title-text-color: map-get($colors, lightGray);
 $toolbar-wp-title-text-color: map-get($colors, lightGray);
+$toolbar-md-height: 44px;
+$toolbar-md-title-font-size: 1.7rem;
+$toolbar-md-title-font-weight: bold;
+$toolbar-md-title-text-align: center;
 
-$checkbox-md-icon-checkmark-color: map-get($colors, aymaxDark);
-$checkbox-md-icon-checkmark-width: 2px;
-$checkbox-md-icon-size: 40px;
-$checkbox-md-icon-border-radius: 0%;
-$checkbox-md-icon-border-width: 1px;
+$text-input-md-margin-bottom: 11px;	
+$text-input-md-margin-end: 8px;
+$text-input-md-margin-left: 0;
+$text-input-md-margin-right: 8px;
+$text-input-md-margin-start: 0px;
+$text-input-md-margin-top: 11px;
+
+$item-md-padding-bottom: 11px;
+$item-md-padding-end: 16px;
+$item-md-padding-icon-bottom:	8px;
+$item-md-padding-icon-top:	9px;
+$item-md-padding-left:	16px;	
+$item-md-padding-media-bottom:	8px;	
+$item-md-padding-media-bottom:	10px;	
+$item-md-padding-media-top: 10px;	
+$item-md-padding-media-top: 8px;
+$item-md-padding-right: 16px;	
+$item-md-padding-start: 16px;
+$item-md-padding-top: 11px;
+$item-md-paragraph-font-size: 1.4rem;
+$item-md-paragraph-margin:	null;
+$item-md-paragraph-margin-bottom: 2px;	
+$item-md-paragraph-margin-end:	0;
+$item-md-paragraph-margin-start: 0;
+$item-md-paragraph-margin-top:	0;
+$item-md-thumbnail-size: 56px;
+$item-md-padding-icon-bottom: 8px;
+$item-md-padding-icon-top: 9px;
+
+$toolbar-order-md:	(
+  back-button: 0,
+  menu-toggle-start: 1,
+  buttons-left: 2,
+  buttons-start: 3,
+  content: 4,
+  buttons-end: 5,
+  buttons-right: 6,
+  menu-toggle-end: 7,
+);
 
 // App iOS Variables
 // --------------------------------------------------

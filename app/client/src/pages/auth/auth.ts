@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ToastController, ModalController } from "ionic-angular";
+import { LoadingController, ToastController, ModalController, MenuController } from "ionic-angular";
 import { NgForm } from '@angular/forms';
 
 import { EvaluationsPage } from "../evaluations/evaluations";
@@ -20,7 +20,7 @@ export class AuthPage implements OnInit
 	evaluationsPage = EvaluationsPage;
 	notesPage = NotesPage;
 	
-	constructor (private readonly loadingCtrl: LoadingController, private modalCtrl: ModalController,
+	constructor (private readonly loadingCtrl: LoadingController, private modalCtrl: ModalController, private menu: MenuController,
 				private readonly authProvider: AuthProvider,
 				private readonly toastCtrl: ToastController) {}
 	
@@ -48,7 +48,7 @@ export class AuthPage implements OnInit
 		if (error.status && error.status === 401) {
 			message = 'Nom d\'utilisateur ou mot de passe incorrect\.';
 		} else {
-			message = `Unexpected error: ${error.statusText}`;
+			message = `Erreur : ${error.statusText}`;
 		}
 
 		const toast = this.toastCtrl.create({
@@ -69,4 +69,8 @@ export class AuthPage implements OnInit
 		const modal = this.modalCtrl.create(ModalResetPage);
 		modal.present();
 	}
+	
+	ionViewWillLeave() {
+		this.menu.swipeEnable(true);
+   }
 }
