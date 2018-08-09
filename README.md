@@ -9,7 +9,13 @@
 
 **Lancement serveur :**
 
-	~RateMyManager/app/server$		./mvnw spring-boot:run
+- Build war
+
+		~RateMyManager/app/server$		mvn package
+
+- Lancement direct
+
+		~RateMyManager/app/server$		./mvnw spring-boot:run
 	
 **Lancement application client :**
 
