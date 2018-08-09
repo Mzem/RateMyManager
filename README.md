@@ -17,4 +17,10 @@
 	
 **Deploiement android :**
 
-	~RateMyManager/app/client$		...
+- Version debug
+
+		~RateMyManager/app/client$		ionic cordova run android --prod
+
+- Version release (à signer ensuite)
+
+		~RateMyManager/app/client$		ionic cordova run android --prod --release
